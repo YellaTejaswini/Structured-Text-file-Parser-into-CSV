@@ -1,4 +1,5 @@
-# Preprocessing of extracted log files to structured csv log_format
+# Preprocessing of extracted text files to structured csv text_format
+#you can think log format as text format of each line of your file.
 
 import re
 import pandas as pd
