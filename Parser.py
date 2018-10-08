@@ -1,3 +1,5 @@
+# Preprocessing of extracted log files to structured csv log_format
+
 import re
 import pandas as pd
 import numpy as np
@@ -78,3 +80,30 @@ class LogParser:
 
 
 
+#-------------------------------------------------------------------
+
+#executing above class
+#This code converts multiple files of same format at once.
+
+ import os
+
+# give your own input dir of your file and output dir of file to be saved
+input_dir  = r'/remote/iims001/yella/trainmasterlogs1/'  # The input directory of log file
+output_dir = r'/remote/iims001/yella/tejaml/logfilesresults/'  # The output directory of parsing results
+
+regex      = []  # Regular expression list for optional preprocessing (default: [])
+
+
+
+
+for file in os.listdir(input_dir):
+
+
+
+        log_file=file
+        
+        #define the format of your text file you want and give your column names 
+        log_format = '<DateTime> <PIDTID> <lognameid> <adverb> <functionname> <Level>: <Content>' #give the format of your log file
+
+        parser = LogParser(log_file,indir=input_dir,outdir=output_dir, log_format=log_format, rex=regex)
+        parser.load_data()
